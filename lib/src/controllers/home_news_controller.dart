@@ -13,6 +13,8 @@ class HomeNewsController extends GetxController {
   String? selectedCountryCode = "in";
   int? selectedValue = 2;
 
+  String? sortBy = "popularity";
+
   List<Map<String, String>> countriesList = [
     {"Nepal": "np"},
     {"USA": "us"},
@@ -47,6 +49,15 @@ class HomeNewsController extends GetxController {
       isLoading = false;
       update(['NEWS_LIST']);
     }
+  }
+
+  changeSortCategory(String? s) {
+    sortBy = s;
+    logger.d("sortBy $sortBy");
+    getNews(
+        apiUrl:
+            "https://newsapi.org/v2/top-headlines?country=in&sortBy=$sortBy&apiKey=$newsApiKey");
+    update(['SORT_BY']);
   }
 
   @override

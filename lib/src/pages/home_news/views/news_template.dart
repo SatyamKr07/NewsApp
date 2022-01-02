@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/src/models/news_model.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class NewsTemplate extends StatelessWidget {
   NewsTemplate({Key? key, required this.newsModel}) : super(key: key);
@@ -17,40 +18,49 @@ class NewsTemplate extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    newsModel.title,
-                    // maxLines: 1,
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      // overflow: TextOverflow.ellipsis,
-                      fontSize: 16,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      newsModel.title,
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.ellipsis,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    newsModel.description,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 14,
+                    SizedBox(height: 6),
+                    Text(
+                      newsModel.description,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
 
-                      // overflow: TextOverflow.ellipsis,
+                        // overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                  // Expanded(child: Spacer()),
-                  // Expanded(child: Container()),
-                  Text(
-                    newsModel.publishedAt,
-                    style: TextStyle(
-                      fontSize: 12,
+                    // Expanded(child: Spacer()),
+                    // Expanded(child: Container()),
+                    Text(
+                      timeago.format(newsModel.publishedAt),
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
                     ),
-                  ),
-                ],
+                    // Text(
+                    //   newsModel.publishedAt,
+                    //   style: TextStyle(
+                    //     fontSize: 12,
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
             ),
             CachedNetworkImage(
@@ -68,7 +78,11 @@ class NewsTemplate extends StatelessWidget {
                 color: Colors.grey,
               ),
               // placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => CachedNetworkImage(
+                imageUrl:
+                    "https://homestaymatch.com/images/no-image-available.png",
+                fit: BoxFit.cover,
+              ),
               fit: BoxFit.cover,
               height: 120,
               width: 120,

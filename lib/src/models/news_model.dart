@@ -8,7 +8,7 @@ class NewsModel {
     this.description = "",
     this.url = "",
     this.urlToImage = "",
-    this.publishedAt = "",
+    required this.publishedAt,
     this.content = "",
   });
 
@@ -18,7 +18,7 @@ class NewsModel {
   String description;
   String url;
   String urlToImage;
-  String publishedAt;
+  DateTime publishedAt;
   String content;
 
   factory NewsModel.fromRawJson(String str) =>
@@ -33,8 +33,8 @@ class NewsModel {
         description: json["description"] ?? '',
         url: json["url"] ?? '',
         urlToImage: json["urlToImage"] ?? '',
-        publishedAt: (json["publishedAt"]) ?? '',
-        // publishedAt: DateTime.parse(json["publishedAt"]),
+        // publishedAt: (json["publishedAt"]) ?? '',
+        publishedAt: DateTime.parse(json["publishedAt"]),
         content: json["content"] ?? '',
       );
 
@@ -45,8 +45,8 @@ class NewsModel {
         "description": description,
         "url": url,
         "urlToImage": urlToImage,
-        "publishedAt": publishedAt,
-        // "publishedAt": publishedAt.toIso8601String(),
+        // "publishedAt": publishedAt,
+        "publishedAt": publishedAt.toIso8601String(),
         "content": content,
       };
 }

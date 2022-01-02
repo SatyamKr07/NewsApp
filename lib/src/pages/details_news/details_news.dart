@@ -50,7 +50,7 @@ class DetailsNews extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    newsModel.publishedAt,
+                    newsModel.publishedAt.toString(),
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 12,

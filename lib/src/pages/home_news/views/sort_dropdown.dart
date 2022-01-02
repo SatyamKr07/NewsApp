@@ -8,20 +8,20 @@ class SortDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeNewsController>(
-      id: "FILTER_CATEGORY_DROPDOWN",
+      id: "SORT_BY",
       builder: (_) => DropdownButton<String>(
         // value: _.blogModel.category,
-        // value: _.filterCategory,
-        // onChanged: _.changeFilter,
-        value: "Popular",
-        onChanged: (s) {},
+        value: _.sortBy,
+        onChanged: _.changeSortCategory,
+        // value: "Popular",
+        // onChanged: (s) {},
         items: const [
           DropdownMenuItem(
-            value: "Popular",
+            value: "popularity",
             child: Text('Popular'),
           ),
           DropdownMenuItem(
-            value: "Newest",
+            value: "publishedAt",
             child: Text('Newest'),
           ),
           DropdownMenuItem(
