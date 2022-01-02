@@ -23,25 +23,41 @@ class NewsTemplate extends StatelessWidget {
                 children: [
                   Text(
                     newsModel.title,
+                    // maxLines: 1,
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.bold,
+                      // overflow: TextOverflow.ellipsis,
+                      fontSize: 16,
                     ),
                   ),
+                  SizedBox(height: 6),
                   Text(
                     newsModel.description,
-                    style: TextStyle(),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+
+                      // overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   // Expanded(child: Spacer()),
-                  Text(newsModel.publishedAt),
+                  // Expanded(child: Container()),
+                  Text(
+                    newsModel.publishedAt,
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
                 ],
               ),
             ),
             CachedNetworkImage(
               imageUrl: newsModel.urlToImage,
               imageBuilder: (context, imageProvider) => Container(
-                width: 100.0,
-                height: 100.0,
+                width: 120.0,
+                height: 120.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   image:
@@ -54,8 +70,8 @@ class NewsTemplate extends StatelessWidget {
               // placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
               fit: BoxFit.cover,
-              height: 100,
-              width: 100,
+              height: 120,
+              width: 120,
             ),
           ],
         ),

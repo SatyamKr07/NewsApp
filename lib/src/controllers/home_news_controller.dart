@@ -18,15 +18,8 @@ class HomeNewsController extends GetxController {
       for (Map<String, dynamic> json in response.data['articles']) {
         logger.d("json: " + json.toString());
         logger.d("json['articles']: " + json.toString());
-
         NewsModel newsModel = NewsModel.fromJson(json);
         newsList.add(newsModel);
-
-        // PostModel post = PostModel.fromJson(json["post"]);
-        // debugPrint("post: " + post.toJson().toString());
-
-        // Timings timings = Timings.fromJson(json["timings"]);
-        // debugPrint("timeimgs: " + timings.toJson().toString());
       }
       logger.d("newsList.length: ${newsList.length}");
     } catch (e) {
