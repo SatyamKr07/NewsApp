@@ -69,8 +69,8 @@ class Source {
   String toRawJson() => json.encode(toJson());
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
-        id: json["id"],
-        name: json["name"],
+        id: json["id"] ?? "",
+        name: json["name"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

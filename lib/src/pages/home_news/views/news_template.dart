@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/src/models/news_model.dart';
 
 class NewsTemplate extends StatelessWidget {
-  const NewsTemplate({Key? key}) : super(key: key);
+  NewsTemplate({Key? key, required this.newsModel}) : super(key: key);
+  NewsModel newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,26 +20,25 @@ class NewsTemplate extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
-                    "News Source",
+                    newsModel.title,
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    "Lorem ispusm...News will be displayed here.",
+                    newsModel.description,
                     style: TextStyle(),
                   ),
                   // Expanded(child: Spacer()),
-                  Text("10 min ago"),
+                  Text(newsModel.publishedAt),
                 ],
               ),
             ),
             CachedNetworkImage(
-              imageUrl:
-                  "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+              imageUrl: newsModel.urlToImage,
               imageBuilder: (context, imageProvider) => Container(
                 width: 100.0,
                 height: 100.0,
@@ -47,7 +48,10 @@ class NewsTemplate extends StatelessWidget {
                       DecorationImage(image: imageProvider, fit: BoxFit.cover),
                 ),
               ),
-              placeholder: (context, url) => CircularProgressIndicator(),
+              placeholder: (context, url) => Container(
+                color: Colors.grey,
+              ),
+              // placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
               fit: BoxFit.cover,
               height: 100,
