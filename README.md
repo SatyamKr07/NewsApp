@@ -1,24 +1,15 @@
 # news_app
 
-A new Flutter project.
+A nice news app using newapi.org and with cool UI and UX.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## Assets
-
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
-
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
+- A news feed showing latest news from API with pagination
+- Show Top Headlines based on the user's location.
+- Allow users to search through the news from the feed.
+- Open Original news articles
+- Users can view the details of news on a separate screen.
+- Users can sort the news with popularity, newest etc.
 
 ## Localization
 
