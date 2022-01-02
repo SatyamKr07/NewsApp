@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:news_app/src/pages/home_news/views/country_bms.dart';
 import 'package:news_app/src/pages/home_news/views/news_list.dart';
 import 'package:news_app/src/pages/home_news/views/sort_dropdown.dart';
+
+import 'views/search_result_page.dart';
+import 'views/search_text_field.dart';
 
 class HomeNews extends StatelessWidget {
   const HomeNews({Key? key}) : super(key: key);
@@ -24,9 +28,11 @@ class HomeNews extends StatelessWidget {
         child: ListView(
           shrinkWrap: true,
           children: [
-            TextField(
-              decoration:
-                  InputDecoration(label: Text("Search for news, topic")),
+            InkWell(
+              onTap: () {
+                Get.to(() => SearchResultPage());
+              },
+              child: SearchTextField(),
             ),
             SizedBox(height: 20),
             Container(
