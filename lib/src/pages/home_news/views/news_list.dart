@@ -28,7 +28,8 @@ class NewsList extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16.0),
                   child: InkWell(
                     onTap: () {
-                      Get.to(() => DetailsNews());
+                      Get.to(() => DetailsNews(
+                          newsModel: homeNewsController.newsList[index]));
                     },
                     child: NewsTemplate(
                       newsModel: homeNewsController.newsList[index],
