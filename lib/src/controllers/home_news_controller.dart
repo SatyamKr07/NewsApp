@@ -1,15 +1,30 @@
 import 'package:dio/dio.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:news_app/src/central/my_logger.dart';
+import 'package:news_app/src/central/strings.dart';
 import 'package:news_app/src/models/news_model.dart';
 
 class HomeNewsController extends GetxController {
   Dio dio = Dio();
   List<NewsModel> newsList = [];
   bool isLoading = false;
+  String selectedCountry = "India";
+  String tempCountry = "India";
+
+  List<Map<String, String>> countriesList = [
+    {"Nepal": "np"},
+    {"USA": "us"},
+    {"India": "in"},
+    {"Sri Lanka": "sl"},
+    {"England": "en"},
+    {"Sweden": "sw"},
+    {"Pacific Islands": "pi"},
+  ];
+
   Future getNews() async {
     String apiUri =
-        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=5d6a9967f4cc40d3991cf59116e5c149";
+        "https://newsapi.org/v2/top-headlines?country=in&apiKey=$newsApiKey";
+    // "https://newsapi.org/v2/everything?q=bitcoin&apiKey=$newsApiKey";
     try {
       isLoading = true;
       update(['NEWS_LIST']);

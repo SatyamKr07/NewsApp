@@ -21,12 +21,12 @@ class SortDropdown extends StatelessWidget {
             child: Text('Popular'),
           ),
           DropdownMenuItem(
-            value: "sports",
-            child: Text('Sports'),
+            value: "Newest",
+            child: Text('Newest'),
           ),
           DropdownMenuItem(
-            value: "movies",
-            child: Text('Movies'),
+            value: "Oldest",
+            child: Text('Oldest'),
           ),
         ],
       ),

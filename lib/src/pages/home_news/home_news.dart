@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/src/pages/home_news/views/country_bms.dart';
 import 'package:news_app/src/pages/home_news/views/news_list.dart';
 import 'package:news_app/src/pages/home_news/views/sort_dropdown.dart';
 
@@ -14,19 +15,7 @@ class HomeNews extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Location"),
-                Row(
-                  children: const [
-                    Icon(Icons.location_on, size: 16),
-                    Text("India")
-                  ],
-                ),
-              ],
-            ),
+            child: CountryBms(),
           )
         ],
       ),
