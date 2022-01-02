@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:news_app/src/central/my_logger.dart';
+import 'package:news_app/src/central/strings.dart';
 import 'package:news_app/src/controllers/home_news_controller.dart';
 
 class CountryBms extends StatefulWidget {
@@ -57,6 +58,11 @@ class _CountryBmsState extends State<CountryBms> {
                                     ' homeNewsController.tempCountry ${homeNewsController.tempCountry}');
                                 logger.d(
                                     'homeNewsController.selectedCountry ${homeNewsController.selectedCountry}');
+                                homeNewsController.getNews(
+                                  apiUrl:
+                                      "https://newsapi.org/v2/top-headlines?country=${homeNewsController.selectedCountryCode}&apiKey=$newsApiKey",
+                                );
+
                                 Navigator.pop(context);
                               },
                               child: Padding(
@@ -105,8 +111,6 @@ class RadioTileList extends StatefulWidget {
 class _MyStatefulWidgetState extends State<RadioTileList> {
   // CountryList _site = CountryList.javatpoint;
 
-  int? selectedValue = 2;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -134,11 +138,16 @@ class _MyStatefulWidgetState extends State<RadioTileList> {
             trailing: Radio<int>(
               value: index,
               // value: CountryList.javatpoint,
-              groupValue: selectedValue,
+              groupValue: homeNewsController.selectedValue,
               onChanged: (value) {
                 setState(() {
-                  selectedValue = value;
+                  homeNewsController.selectedValue = value;
                   homeNewsController.tempCountry = countryName;
+                  homeNewsController.selectedCountryCode =
+                      homeNewsController.countriesList[index][countryName];
+
+                  logger.d(
+                      'homeNewsController.selectedCountryCode ${homeNewsController.selectedCountryCode}');
                   logger.d(
                       'homeNewsController.tempCountry ${homeNewsController.tempCountry}');
                 });

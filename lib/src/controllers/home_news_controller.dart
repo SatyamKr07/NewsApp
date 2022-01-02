@@ -10,25 +10,29 @@ class HomeNewsController extends GetxController {
   bool isLoading = false;
   String selectedCountry = "India";
   String tempCountry = "India";
+  String? selectedCountryCode = "in";
+  int? selectedValue = 2;
 
   List<Map<String, String>> countriesList = [
     {"Nepal": "np"},
     {"USA": "us"},
     {"India": "in"},
-    {"Sri Lanka": "sl"},
-    {"England": "en"},
-    {"Sweden": "sw"},
-    {"Pacific Islands": "pi"},
+    {"Sri Lanka": "lk"},
+    {"England": "gb-eng"},
+    {"Sweden": "sg"},
+    {"Pacific Islands": "pc"},
   ];
 
-  Future getNews() async {
-    String apiUri =
-        "https://newsapi.org/v2/top-headlines?country=in&apiKey=$newsApiKey";
+  Future getNews({required String apiUrl}) async {
+    // selectedCountryCode=countriesList[]
+    // String apiUri =
+    //     "https://newsapi.org/v2/top-headlines?country=in&apiKey=$newsApiKey";
     // "https://newsapi.org/v2/everything?q=bitcoin&apiKey=$newsApiKey";
+    newsList.clear();
     try {
       isLoading = true;
       update(['NEWS_LIST']);
-      Response response = await dio.get(apiUri);
+      Response response = await dio.get(apiUrl);
       logger.d('getNews response $response');
       for (Map<String, dynamic> json in response.data['articles']) {
         logger.d("json: " + json.toString());
@@ -49,6 +53,8 @@ class HomeNewsController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    getNews();
+    getNews(
+        apiUrl:
+            "https://newsapi.org/v2/top-headlines?country=in&apiKey=$newsApiKey");
   }
 }
