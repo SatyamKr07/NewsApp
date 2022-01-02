@@ -26,7 +26,7 @@ class SearchTextField extends StatelessWidget {
             contentPadding: EdgeInsets.fromLTRB(16, 16, 8, 8),
             suffixIcon: InkWell(
               onTap: () {
-                performSearch();
+                homeNewsController.performSearch();
               },
               child: Icon(Icons.search),
             ),
@@ -37,16 +37,10 @@ class SearchTextField extends StatelessWidget {
           ),
           onSubmitted: (s) {
             homeNewsController.searchNewsController.text = s;
-            performSearch();
+            homeNewsController.performSearch();
           },
         ),
       ),
     );
-  }
-
-  void performSearch() {
-    homeNewsController.getNews(
-        apiUrl:
-            "https://newsapi.org/v2/everything?q=${homeNewsController.searchNewsController.text}&sortBy=publishedAt&apiKey=$newsApiKey");
   }
 }

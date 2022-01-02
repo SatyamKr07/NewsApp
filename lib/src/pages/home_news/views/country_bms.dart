@@ -18,15 +18,9 @@ class _CountryBmsState extends State<CountryBms> {
     return Center(
       child: InkWell(
         onTap: () {
-          // when raised button is pressed
-          // we display showModalBottomSheet
           showModalBottomSheet<void>(
-            // context and builder are
-            // required properties in this widget
             context: context,
             builder: (BuildContext context) {
-              // we set up a container inside which
-              // we create center column and display text
               return SizedBox(
                 height: Get.height,
                 child: Padding(
@@ -35,17 +29,17 @@ class _CountryBmsState extends State<CountryBms> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Choose Your Location',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
-                      Divider(color: Colors.grey),
-                      SizedBox(height: 16),
+                      const Divider(color: Colors.grey),
+                      const SizedBox(height: 16),
                       // Text("Nepal")
-                      Expanded(child: RadioTileList()),
+                      const Expanded(child: RadioTileList()),
                       Center(
                           child: ElevatedButton(
                               onPressed: () {
@@ -54,19 +48,12 @@ class _CountryBmsState extends State<CountryBms> {
                                       homeNewsController.tempCountry;
                                 });
 
-                                logger.d(
-                                    ' homeNewsController.tempCountry ${homeNewsController.tempCountry}');
-                                logger.d(
-                                    'homeNewsController.selectedCountry ${homeNewsController.selectedCountry}');
-                                homeNewsController.getNews(
-                                  apiUrl:
-                                      "https://newsapi.org/v2/top-headlines?country=${homeNewsController.selectedCountryCode}&apiKey=$newsApiKey",
-                                );
+                                homeNewsController.getCountryNews();
 
                                 Navigator.pop(context);
                               },
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(16.0),
                                 child: Text("Apply"),
                               )))
                     ],
@@ -80,7 +67,7 @@ class _CountryBmsState extends State<CountryBms> {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Location"),
+            const Text("Location"),
             Row(
               children: [
                 Icon(Icons.location_on, size: 16),
@@ -101,21 +88,11 @@ class RadioTileList extends StatefulWidget {
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
-// enum CountryList {
-//   Nepal,
-//   USA,
-//   India,
-//   SriLanka,
-// }
-
 class _MyStatefulWidgetState extends State<RadioTileList> {
-  // CountryList _site = CountryList.javatpoint;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // getKeysFromMap(countriesList);
   }
 
   final homeNewsController = Get.find<HomeNewsController>();
@@ -137,7 +114,6 @@ class _MyStatefulWidgetState extends State<RadioTileList> {
             title: Text(countryName),
             trailing: Radio<int>(
               value: index,
-              // value: CountryList.javatpoint,
               groupValue: homeNewsController.selectedValue,
               onChanged: (value) {
                 setState(() {
