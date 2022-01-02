@@ -1,16 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:news_app/src/controllers/home_news_controller.dart';
 import 'package:news_app/src/models/news_model.dart';
 
 class DetailsNews extends StatelessWidget {
-  const DetailsNews({Key? key, required this.newsModel}) : super(key: key);
+  DetailsNews({Key? key, required this.newsModel}) : super(key: key);
   final NewsModel newsModel;
+  final homeNewsController = Get.find<HomeNewsController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: const Color(0xffF5F9FD),
       appBar: AppBar(),
       body: SizedBox(
         height: Get.height,
@@ -29,7 +31,11 @@ class DetailsNews extends StatelessWidget {
                 ),
               ),
               placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => CachedNetworkImage(
+                imageUrl:
+                    "https://homestaymatch.com/images/no-image-available.png",
+                fit: BoxFit.cover,
+              ),
               fit: BoxFit.cover,
               width: Get.width,
               height: Get.width * 3 / 4,
@@ -63,14 +69,27 @@ class DetailsNews extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  // Spacer(),
-                  // Expanded(child: Container()),
-                  Text(
-                    "See full Story",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                      fontSize: 16,
+                  SizedBox(height: 24),
+                  InkWell(
+                    onTap: () {
+                      homeNewsController.launchURL(url: newsModel.url);
+                    },
+                    child: Row(
+                      children: const [
+                        Text(
+                          "See full Story",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 16,
+                          color: Colors.blue,
+                        )
+                      ],
                     ),
                   )
                 ],

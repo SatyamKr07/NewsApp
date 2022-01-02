@@ -9,7 +9,7 @@ class HomeNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: const Color(0xffF5F9FD),
       appBar: AppBar(
         title: Text("MyNEWS"),
         actions: [

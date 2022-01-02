@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:news_app/src/central/my_logger.dart';
 import 'package:news_app/src/central/strings.dart';
 import 'package:news_app/src/models/news_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeNewsController extends GetxController {
   Dio dio = Dio();
@@ -58,6 +59,10 @@ class HomeNewsController extends GetxController {
         apiUrl:
             "https://newsapi.org/v2/top-headlines?country=in&sortBy=$sortBy&apiKey=$newsApiKey");
     update(['SORT_BY']);
+  }
+
+  void launchURL({required String url}) async {
+    if (!await launch(url)) throw 'Could not launch $url';
   }
 
   @override
