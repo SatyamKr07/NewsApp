@@ -101,7 +101,7 @@ class HomeNewsController extends GetxController {
     resetNewsData();
     getNewsWithPagination(
         apiUrl:
-            "https://newsapi.org/v2/everything?pageSize=10&page=$pageNum&q=${searchNewsController.text}&sortBy=publishedAt&apiKey=$newsApiKey");
+            "https://newsapi.org/v2/everything?pageSize=20&page=$pageNum&q=${searchNewsController.text}&sortBy=publishedAt&apiKey=$newsApiKey");
   }
 
   void launchURL({required String url}) async {
