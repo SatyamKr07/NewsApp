@@ -45,22 +45,24 @@ class HomeNewsController extends GetxController {
       List<NewsModel> tempNewsList = [];
       Response response = await dio.get(apiUrl);
       // logger.d('getNews response $response');
-      logger.d('getNews totalResults ${response.data['totalResults']}');
-      if (response.data['articles'].length < 10) {
-        logger.d("hasMore data $hasMore");
-        hasMore = false;
-      } else {
-        hasMore = true;
-        logger.d("hasMore $hasMore");
+      if (response.statusCode == 200) {
+        logger.d('getNews totalResults ${response.data['totalResults']}');
+        if (response.data['articles'].length < 10) {
+          logger.d("hasMore data $hasMore");
+          hasMore = false;
+        } else {
+          hasMore = true;
+          logger.d("hasMore $hasMore");
+        }
+        for (Map<String, dynamic> json in response.data['articles']) {
+          logger.d("json: " + json.toString());
+          logger.d("json['articles']: " + json.toString());
+          NewsModel newsModel = NewsModel.fromJson(json);
+          tempNewsList.add(newsModel);
+        }
+        newsList.addAll(tempNewsList);
+        logger.d("newsList.length: ${newsList.length}");
       }
-      for (Map<String, dynamic> json in response.data['articles']) {
-        logger.d("json: " + json.toString());
-        logger.d("json['articles']: " + json.toString());
-        NewsModel newsModel = NewsModel.fromJson(json);
-        tempNewsList.add(newsModel);
-      }
-      newsList.addAll(tempNewsList);
-      logger.d("newsList.length: ${newsList.length}");
     } catch (e) {
       logger.e('getNews error $e');
     } finally {
