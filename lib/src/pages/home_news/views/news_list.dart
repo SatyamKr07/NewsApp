@@ -20,40 +20,23 @@ class NewsList extends StatelessWidget {
       builder: (_) =>
           homeNewsController.newsList.isEmpty && homeNewsController.isLoading
               ? const Center(child: CircularProgressIndicator())
-              : NotificationListener<ScrollNotification>(
-                  onNotification: (ScrollNotification scrollInfo) {
-                    logger.d('inside scroll Notification outside if');
-
-                    if (scrollInfo.metrics.pixels ==
-                        scrollInfo.metrics.maxScrollExtent) {
-                      // start loading data
-                      // setState(() {
-                      //   isLoading = true;
-                      // });
-                      // _loadData();
-                      // logger.d('inside scroll Notification');
-                      homeNewsController.doPagination();
+              : ListView.builder(
+                  // controller: homeNewsController.scrollController,
+                  shrinkWrap: true,
+                  itemCount: homeNewsController.newsList.length,
+                  physics: ClampingScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == homeNewsController.newsList.length - 1) {
+                      return Column(children: [
+                        newsListBody(index),
+                        if (homeNewsController.hasMore &&
+                            homeNewsController.isLoading)
+                          CircularProgressIndicator(),
+                      ]);
                     }
-                    return true;
+                    // NewsModel newsModel = NewsModel();
+                    return newsListBody(index);
                   },
-                  child: ListView.builder(
-                    // controller: homeNewsController.scrollController,
-                    shrinkWrap: true,
-                    itemCount: homeNewsController.newsList.length,
-                    physics: ClampingScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index == homeNewsController.newsList.length - 1) {
-                        return Column(children: [
-                          newsListBody(index),
-                          if (homeNewsController.hasMore &&
-                              homeNewsController.isLoading)
-                            CircularProgressIndicator(),
-                        ]);
-                      }
-                      // NewsModel newsModel = NewsModel();
-                      return newsListBody(index);
-                    },
-                  ),
                 ),
     );
   }

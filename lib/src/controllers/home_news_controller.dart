@@ -108,12 +108,6 @@ class HomeNewsController extends GetxController {
     if (!await launch(url)) throw 'Could not launch $url';
   }
 
-  doPagination() {
-    getNewsWithPagination(
-        apiUrl:
-            "https://newsapi.org/v2/top-headlines?pageSize=10&page=$pageNum&country=in&apiKey=$newsApiKey");
-  }
-
   @override
   void onInit() {
     // TODO: implement onInit

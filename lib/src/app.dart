@@ -5,8 +5,6 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:news_app/src/central/controller_bindings.dart';
 import 'package:news_app/src/pages/home_news/home_news.dart';
 
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -67,22 +65,7 @@ class MyApp extends StatelessWidget {
 
           // Define a function to handle named routes in order to support
           // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                  default:
-                    return const SampleItemListView();
-                }
-              },
-            );
-          },
+
           home: HomeNews(),
         );
       },
