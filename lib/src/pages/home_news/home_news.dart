@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
-import 'package:news_app/src/pages/home_news/views/country_bms.dart';
-import 'package:news_app/src/pages/home_news/views/news_list.dart';
-import 'package:news_app/src/pages/home_news/views/sort_dropdown.dart';
+import '../../controllers/home_news_controller.dart';
+import 'views/country_bms.dart';
+import 'views/news_list.dart';
+import 'views/sort_dropdown.dart';
 
 import 'views/search_result_page.dart';
 import 'views/search_text_field.dart';

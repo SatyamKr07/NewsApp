@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/route_manager.dart';
-import 'package:news_app/src/central/my_logger.dart';
-import 'package:news_app/src/central/strings.dart';
-import 'package:news_app/src/models/news_model.dart';
+import '../central/my_logger.dart';
+import '../central/strings.dart';
+import '../models/news_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeNewsController extends GetxController {

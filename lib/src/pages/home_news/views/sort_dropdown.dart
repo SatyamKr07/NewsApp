@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
+import '../../../controllers/home_news_controller.dart';
 
 class SortDropdown extends StatelessWidget {
   const SortDropdown({Key? key}) : super(key: key);

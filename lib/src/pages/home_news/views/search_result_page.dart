@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/src/pages/home_news/views/news_list.dart';
-import 'package:news_app/src/pages/home_news/views/search_text_field.dart';
+import 'news_list.dart';
+import 'search_text_field.dart';
 
 class SearchResultPage extends StatelessWidget {
   const SearchResultPage({Key? key}) : super(key: key);

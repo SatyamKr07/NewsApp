@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
-import 'package:news_app/src/models/news_model.dart';
+import '../../controllers/home_news_controller.dart';
+import '../../models/news_model.dart';
 
 class DetailsNews extends StatelessWidget {
   DetailsNews({Key? key, required this.newsModel}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:get/instance_manager.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
+import '../controllers/home_news_controller.dart';
 
 class ControllerBinding extends Bindings {
   @override

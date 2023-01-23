@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
-import 'package:news_app/src/central/my_logger.dart';
-import 'package:news_app/src/central/strings.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
+import '../../../central/my_logger.dart';
+import '../../../central/strings.dart';
+import '../../../controllers/home_news_controller.dart';
 
 class CountryBms extends StatefulWidget {
   @override

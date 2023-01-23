@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:news_app/src/central/controller_bindings.dart';
-import 'package:news_app/src/pages/home_news/home_news.dart';
+import 'central/controller_bindings.dart';
+import 'pages/home_news/home_news.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:news_app/src/central/strings.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
+import '../../../central/strings.dart';
+import '../../../controllers/home_news_controller.dart';
 
 class SearchTextField extends StatelessWidget {
   SearchTextField({

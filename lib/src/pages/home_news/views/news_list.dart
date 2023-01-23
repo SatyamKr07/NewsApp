@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/route_manager.dart';
-import 'package:news_app/src/central/my_logger.dart';
-import 'package:news_app/src/controllers/home_news_controller.dart';
-import 'package:news_app/src/models/news_model.dart';
-import 'package:news_app/src/pages/details_news/details_news.dart';
+import '../../../central/my_logger.dart';
+import '../../../controllers/home_news_controller.dart';
+import '../../../models/news_model.dart';
+import '../../details_news/details_news.dart';
 
 import 'news_template.dart';
 
