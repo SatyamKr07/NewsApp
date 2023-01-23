@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/route_manager.dart';
+
+import 'package:get/get.dart' hide Response;
+
 import '../central/my_logger.dart';
 import '../central/strings.dart';
 import '../models/news_model.dart';
@@ -38,12 +39,15 @@ class HomeNewsController extends GetxController {
     logger.d("in getNews, apiUrl $apiUrl");
 
     if (!hasMore) return;
-    // newsList.clear();
+
     try {
+      //@note below 2 lines start the circular progress bar
       isLoading = true;
       update(['NEWS_LIST']);
+
       List<NewsModel> tempNewsList = [];
-      Response response = await dio.get(apiUrl);
+      Response response =
+          await dio.get(apiUrl); // @note hide Response from getx package
       // logger.d('getNews response $response');
       if (response.statusCode == 200) {
         logger.d('getNews totalResults ${response.data['totalResults']}');
@@ -57,6 +61,7 @@ class HomeNewsController extends GetxController {
         for (Map<String, dynamic> json in response.data['articles']) {
           logger.d("json: " + json.toString());
           logger.d("json['articles']: " + json.toString());
+
           NewsModel newsModel = NewsModel.fromJson(json);
           tempNewsList.add(newsModel);
         }
